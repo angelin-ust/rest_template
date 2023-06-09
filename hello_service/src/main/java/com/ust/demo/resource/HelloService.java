@@ -1,0 +1,28 @@
+package com.ust.demo.resource;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+@RequestMapping("/api/services")
+public class HelloService {
+
+	
+	//1st step giving strmeasage a default value
+		//value is coming from the appication.property value we trying to pull 
+		//valuee aa spring appication name avide ollu name 
+		//pull cheyumm
+	
+	
+	@Value("${spring.application.name}")
+     String name;
+	
+	
+	@GetMapping
+	public String message() {
+		return "The programe running"+" " +name;
+	}
+}

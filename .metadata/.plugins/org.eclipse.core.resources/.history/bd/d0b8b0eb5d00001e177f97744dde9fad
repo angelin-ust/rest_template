@@ -1,0 +1,29 @@
+package com.ust.demo.resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+@RequestMapping("/api/client")
+public class Controllerhello {
+
+	
+	@Autowired
+	RestTemplate restemplates;
+	
+	
+	@GetMapping("/service")
+	public String callServer() {
+		//helloserver illl poyii ath int url nookumm and then change the port
+		
+		String url="http://localhost:8094/api/services";
+		
+		String output=restemplates.getForObject(url, String.class);
+		return output+ "from the hello client";
+		
+		
+	}
+}
